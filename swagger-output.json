@@ -1,0 +1,920 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Aplikasi REST API",
+    "description": "Dokumentasi yang dihasilkan dengan <b>swagger-autogen</b> module."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Index",
+      "description": "Endpoints untuk Index"
+    },
+    {
+      "name": "User",
+      "description": "Endpoints untuk User"
+    },
+    {
+      "name": "Berita",
+      "description": "Endpoints untuk Berita"
+    },
+    {
+      "name": "Pengaduan",
+      "description": "Endpoints untuk Pengaduan"
+    },
+    {
+      "name": "PetugasDesa",
+      "description": "Endpoints untuk PetugasDesa"
+    },
+    {
+      "name": "Admin",
+      "description": "Endpoints untuk Admin"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Index"
+        ],
+        "description": "Endpoint untuk index http get.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": [
+          "Index"
+        ],
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "photo cover user"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "name user"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "email user"
+          },
+          {
+            "name": "occupation",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "occupation user"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "occupation": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Profile",
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint untuk mengambil semua User.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint untuk membuat user baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi User.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint untuk mengambil User berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi User.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint untuk menghapus User.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/berita/": {
+      "get": {
+        "tags": [
+          "Berita"
+        ],
+        "description": "Endpoint untuk mengambil semua Berita.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Berita",
+            "schema": {
+              "$ref": "#/definitions/Beritas"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Berita"
+        ],
+        "description": "Endpoint untuk membuat berita baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Berita.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Berita",
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        }
+      }
+    },
+    "/berita/{id}": {
+      "get": {
+        "tags": [
+          "Berita"
+        ],
+        "description": "Endpoint untuk mengambil Berita berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Berita",
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Berita"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Berita.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Berita",
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Berita"
+        ],
+        "description": "Endpoint untuk menghapus Berita.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Berita",
+            "schema": {
+              "$ref": "#/definitions/Berita"
+            }
+          }
+        }
+      }
+    },
+    "/pengaduan/": {
+      "get": {
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk mengambil semua Pengaduan.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Pengaduan",
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk membuat pengaduan baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Pengaduan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Pengaduan",
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        }
+      }
+    },
+    "/pengaduan/{id}": {
+      "get": {
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk mengambil Pengaduan berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Pengaduan",
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Pengaduan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Pengaduan",
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk menghapus Pengaduan.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Pengaduan",
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            }
+          }
+        }
+      }
+    },
+    "/petugasdesa/": {
+      "get": {
+        "tags": [
+          "PetugasDesa"
+        ],
+        "description": "Endpoint untuk mengambil semua PetugasDesa.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasDesa",
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PetugasDesa"
+        ],
+        "description": "Endpoint untuk membuat petugasdesa baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasDesa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasDesa",
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        }
+      }
+    },
+    "/petugasdesa/{id}": {
+      "get": {
+        "tags": [
+          "PetugasDesa"
+        ],
+        "description": "Endpoint untuk mengambil PetugasDesa berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasDesa",
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PetugasDesa"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasDesa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasDesa",
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PetugasDesa"
+        ],
+        "description": "Endpoint untuk menghapus PetugasDesa.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasDesa",
+            "schema": {
+              "$ref": "#/definitions/PetugasDesa"
+            }
+          }
+        }
+      }
+    },
+    "/admin/": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint untuk mengambil semua Admin.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Admin",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint untuk membuat admin baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Admin.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Admin",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      }
+    },
+    "/admin/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint untuk mengambil Admin berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Admin",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Admin.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Admin",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Endpoint untuk menghapus Admin.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Admin",
+            "schema": {
+              "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Salam": {
+      "type": "object",
+      "properties": {
+        "pesan": {
+          "type": "string",
+          "example": "hello world"
+        },
+        "method": {
+          "type": "string",
+          "example": "get"
+        }
+      }
+    },
+    "Berita": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nikpengaduan": {
+          "type": "number",
+          "example": 3674120120120
+        },
+        "judulpengaduan": {
+          "type": "string",
+          "example": "banjir"
+        },
+        "lokasipengaduan": {
+          "type": "string",
+          "example": "menjangan raya"
+        },
+        "deskripsipengaduan": {
+          "type": "string",
+          "example": "air menggenang"
+        }
+      }
+    },
+    "Beritas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Berita"
+      }
+    },
+    "Pengaduan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "Judul": {
+          "type": "string",
+          "example": "Banjir Bandang"
+        },
+        "lokasi": {
+          "type": "string",
+          "example": "Jl Menjangan IV"
+        },
+        "deskripsi": {
+          "type": "string",
+          "example": "Air Tidak Mengalir"
+        },
+        "tanggal": {
+          "type": "string",
+          "example": "Selasa 26 Novber 2021"
+        },
+        "notlp": {
+          "type": "string",
+          "example": "081387887675"
+        },
+        "foto": {
+          "type": "string",
+          "example": "cover.jpg"
+        }
+      }
+    },
+    "Pengaduans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Pengaduan"
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Iqbal"
+        },
+        "email": {
+          "type": "string",
+          "example": "iqbalsaputra@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        },
+        "notlp": {
+          "type": "string",
+          "example": "081387887675"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "PetugasDesa": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nama": {
+          "type": "string",
+          "example": "budi"
+        },
+        "email": {
+          "type": "string",
+          "example": "budijati@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        },
+        "notlp": {
+          "type": "string",
+          "example": "08909023035"
+        }
+      }
+    },
+    "PetugasDesas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PetugasDesa"
+      }
+    },
+    "Admin": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nama": {
+          "type": "string",
+          "example": "budi"
+        },
+        "email": {
+          "type": "string",
+          "example": "budijati@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        }
+      }
+    },
+    "Admins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Admin"
+      }
+    },
+    "Profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "profile-id"
+        },
+        "name": {
+          "type": "string",
+          "example": "user 1"
+        },
+        "email": {
+          "type": "string",
+          "example": "user1@email.com"
+        },
+        "occupation": {
+          "type": "string",
+          "example": "programmer"
+        },
+        "cover": {
+          "type": "string",
+          "example": "cover.jpg"
+        }
+      }
+    }
+  }
+}
