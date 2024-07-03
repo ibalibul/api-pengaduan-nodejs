@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "start-gendoc": "node swagger.js"
+    "start-gendoc": "node swagger.js",
+    "build": "npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
