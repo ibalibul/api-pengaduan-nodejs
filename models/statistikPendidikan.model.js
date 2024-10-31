@@ -1,10 +1,10 @@
 module.exports = function (sequelize, Sequalize) {
   var StatistikPendidikan = sequelize.define('StatistikPendidikan', {
-    sd: Sequalize.STRING,
-    smp: Sequalize.STRING,
-    sma: Sequalize.STRING,
-    smk: Sequalize.STRING,
-    kuliah: Sequalize.STRING,
+    sd: Sequalize.INTEGER,
+    smp: Sequalize.INTEGER,
+    sma: Sequalize.INTEGER,
+    smk: Sequalize.INTEGER,
+    kuliah: Sequalize.INTEGER,
   });
   return StatistikPendidikan;
 };

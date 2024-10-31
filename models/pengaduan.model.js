@@ -5,7 +5,8 @@ module.exports = function (sequelize, Sequalize) {
     deskripsi: Sequalize.STRING,
     tanggal: Sequalize.STRING,
     notlp: Sequalize.INTEGER,
-    foto: Sequalize.INTEGER,
+    foto: Sequalize.STRING,
+    status: Sequalize.INTEGER,
   });
   return Pengaduan;
 };

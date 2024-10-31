@@ -1,3 +1,5 @@
+const { statistikjk, kebakaran } = require('./models/sqlite.database.js');
+
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
@@ -110,6 +112,71 @@ const doc = {
         $ref: '#/definitions/PetugasDesa',
       },
     ],
+    PotensiDesa: {
+      id: 1,
+      nama: 'budi',
+      deskrpsi: 'jl menjangan mas',
+      alamat: '12345',
+      foto: 'cover.jpg',
+    },
+    PotensiDesas: [
+      {
+        $ref: '#/definitions/PotensiDesa',
+      },
+    ],
+    StatistikJk: {
+      id: 1,
+      laki_laki: '30',
+      perempuan: '50',
+    },
+    StatistikJks: [
+      {
+        $ref: '#/definitions/StatistikJk',
+      },
+    ],
+    StatistikPend: {
+      id: 1,
+      sd: '30',
+      smp: '50',
+      sma: '30',
+      smk: '50',
+      kuliah: '50',
+    },
+    StatistikPends: [
+      {
+        $ref: '#/definitions/StatistikPend',
+      },
+    ],
+    StatistikPekerjaan: {
+      id: 1,
+      pns: '70',
+      pegawai_swasta: '50',
+      wirausaha: '30',
+      tni: '50',
+      polri: '50',
+      buruh: '50',
+      tidak_bekerja: '50',
+    },
+    StatistikPekerjaans: [
+      {
+        $ref: '#/definitions/StatistikPekerjaan',
+      },
+    ],
+    StatistikAgama: {
+      id: 1,
+      islam: '70',
+      kristen: '30',
+      katholik: '30',
+      hindu: '20',
+      budha: '20',
+      konghucu: '10',
+      kepercayaan: '0',
+    },
+    StatistikAgamas: [
+      {
+        $ref: '#/definitions/StatistikAgama',
+      },
+    ],
     Admin: {
       id: 1,
       nama: 'budi',
@@ -121,12 +188,43 @@ const doc = {
         $ref: '#/definitions/Admin',
       },
     ],
-
+    PetugasKebakaran: {
+      id: 1,
+      nama: 'budi',
+      email: 'budijati@gmail.com',
+      password: '12345',
+    },
+    PetugasKebakarans: [
+      {
+        $ref: '#/definitions/PetugasKebaran',
+      },
+    ],
+    Kebakaran: {
+      id: 1,
+      Judul: 'Banjir Bandang',
+      lokasi: 'Jl Menjangan IV',
+      deskripsi: 'Air Tidak Mengalir',
+      tanggal: 'Selasa 26 Novber 2021',
+      notlp: '081387887675',
+      foto: 'cover.jpg',
+    },
+    Kebakarans: [
+      {
+        $ref: '#/definitions/Kebakaran',
+      },
+    ],
     Profile: {
       id: 'profile-id',
       name: 'user 1',
       email: 'user1@email.com',
       occupation: 'programmer',
+      cover: 'cover.jpg',
+    },
+    PotensiDesa: {
+      id: 1,
+      name: 'situbungur',
+      deskripsi: 'situbungur',
+      alamat: 'menjangan',
       cover: 'cover.jpg',
     },
   },

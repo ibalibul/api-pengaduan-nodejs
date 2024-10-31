@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
   // #swagger.description = 'Endpoint untuk mengambil semua Admin.'
 
   /* #swagger.responses[200] = { 
-    schema: { "$ref": "#/definitions/Admin" },
+    schema: { "$ref": "#/definitions/Admins" },
     description: "Output API untuk objek Admin" } */
 
   var data = await Admin.findAll();

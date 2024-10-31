@@ -1,9 +1,9 @@
-module.exports = function (sequelize, Sequalize) {
+module.exports = function (sequelize, Sequelize) {
   var PotensiDesa = sequelize.define('PotensiDesa', {
-    nama: Sequalize.STRING,
-    deskrpsi: Sequalize.STRING,
-    alamat: Sequalize.STRING,
-    foto: Sequalize.INTEGER,
+    nama: Sequelize.STRING,
+    deskrpsi: Sequelize.STRING,
+    alamat: Sequelize.STRING,
+    foto: Sequelize.INTEGER,
   });
   return PotensiDesa;
 };

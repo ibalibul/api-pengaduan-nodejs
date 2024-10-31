@@ -3,6 +3,8 @@ var router = express.Router();
 
 const db = require('../models/sqlite.database');
 const Pengaduan = db.pengaduans;
+const upload = require('../middlewares/uploadmodule');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/', async (req, res, next) => {
   // #swagger.tags = ['Pengaduan']
@@ -20,28 +22,57 @@ router.get('/:id', async (req, res, next) => {
   // #swagger.description = 'Endpoint untuk mengambil Pengaduan berdasarkan id.'
 
   /* #swagger.responses[200] = { 
+      schema: { "$ref": "#/definitions/Pengaduan" },
+      description: "Output API untuk objek Pengaduan" } */
+  let id = req.params.id;
+  var data = await Pengaduan.findByPk(id);
+  res.json(data);
+});
+router.get('/:id', async (req, res, next) => {
+  // #swagger.tags = ['Pengaduan']
+  // #swagger.description = 'Endpoint untuk mengambil Pengaduan berdasarkan id.'
+
+  /* #swagger.responses[200] = { 
     schema: { "$ref": "#/definitions/Pengaduan" },
     description: "Output API untuk objek Pengaduan" } */
   let id = req.params.id;
   var data = await Pengaduan.findByPk(id);
   res.json(data);
 });
-router.post('/', async (req, res, next) => {
-  // #swagger.tags = ['Pengaduan']
-  // #swagger.description = 'Endpoint untuk membuat pengaduan baru.'
 
-  /*	#swagger.parameters['data'] = {
-              in: 'body',
-              description: 'Informasi Pengaduan.',
-              required: true,
-              schema: { $ref: "#/definitions/Pengaduan" }
-      } */
+router.post('/', upload.single('photo'), async (req, res, next) => {
+  try {
+    const { Judul, lokasi, deskripsi, tanggal, notlp, fotoBase64 } = req.body;
+    let foto = '';
 
-  /* #swagger.responses[200] = { 
-      schema: { "$ref": "#/definitions/Pengaduan" },
-      description: "Output API untuk objek Pengaduan" } */
-  var pengaduan = await Pengaduan.create(req.body);
-  res.json(pengaduan);
+    if (req.file) {
+      foto = `https://97ed-2404-c0-2020-00-6cc-f733.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
+    }
+
+    const newPengaduan = await Pengaduan.create({
+      Judul,
+      lokasi,
+      deskripsi,
+      tanggal,
+      notlp,
+      foto,
+    });
+
+    res.status(201).json({
+      code: 201,
+      status: 'success',
+      message: 'Data pengaduan berhasil disimpan',
+      data: newPengaduan,
+    });
+  } catch (error) {
+    console.error('Error while saving Pengaduan:', error);
+    res.status(500).json({
+      code: 500,
+      status: 'error',
+      message: 'An error occurred while saving the data',
+      error: error.message,
+    });
+  }
 });
 router.put('/:id', async (req, res, next) => {
   // #swagger.tags = ['Pengaduan']

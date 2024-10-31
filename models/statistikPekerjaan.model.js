@@ -1,5 +1,5 @@
 module.exports = function (sequelize, Sequalize) {
-  var StatistikPekerjaan = sequelize.define('StatistikJenisKelamin', {
+  var StatistikPekerjaan = sequelize.define('StatistikPekerjaan', {
     pns: Sequalize.INTEGER,
     pegawai_swasta: Sequalize.INTEGER,
     wirausaha: Sequalize.INTEGER,

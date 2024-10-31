@@ -137,7 +137,7 @@
           "200": {
             "description": "Output API untuk objek User",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Users"
             }
           }
         }
@@ -379,27 +379,42 @@
         }
       },
       "post": {
-        "tags": [
-          "Pengaduan"
-        ],
-        "description": "Endpoint untuk membuat pengaduan baru.",
+        "description": "",
         "parameters": [
           {
-            "name": "data",
+            "name": "body",
             "in": "body",
-            "description": "Informasi Pengaduan.",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/Pengaduan"
+              "type": "object",
+              "properties": {
+                "Judul": {
+                  "example": "any"
+                },
+                "lokasi": {
+                  "example": "any"
+                },
+                "deskripsi": {
+                  "example": "any"
+                },
+                "tanggal": {
+                  "example": "any"
+                },
+                "notlp": {
+                  "example": "any"
+                },
+                "fotoBase64": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "Output API untuk objek Pengaduan",
-            "schema": {
-              "$ref": "#/definitions/Pengaduan"
-            }
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -609,7 +624,7 @@
           "200": {
             "description": "Output API untuk objek Admin",
             "schema": {
-              "$ref": "#/definitions/Admin"
+              "$ref": "#/definitions/Admins"
             }
           }
         }
@@ -712,6 +727,1183 @@
             "description": "Output API untuk objek Admin",
             "schema": {
               "$ref": "#/definitions/Admin"
+            }
+          }
+        }
+      }
+    },
+    "/potensidesa/": {
+      "get": {
+        "tags": [
+          "PotensiDesa"
+        ],
+        "description": "Endpoint untuk mengambil semua PotensiDesa.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PotensiDesa",
+            "schema": {
+              "$ref": "#/definitions/PotensiDesa"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PotensiDesa"
+        ],
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "photo cover potensidesa"
+          },
+          {
+            "name": "nama",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "name potenesidesa"
+          },
+          {
+            "name": "deskrpsi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "deskrpsi"
+          },
+          {
+            "name": "alamat",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "alamat"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nama": {
+                  "example": "any"
+                },
+                "deskrpsi": {
+                  "example": "any"
+                },
+                "alamat": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            },
+            "description": "Output API untuk objek Profile"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/potensidesa/{id}": {
+      "get": {
+        "tags": [
+          "PotensiDesa"
+        ],
+        "description": "Endpoint untuk mengambil PotensiDesa berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PotensiDesa",
+            "schema": {
+              "$ref": "#/definitions/PotensiDesa"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PotensiDesa"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PotensiDesa.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PotensiDesa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PotensiDesa",
+            "schema": {
+              "$ref": "#/definitions/PotensiDesa"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PotensiDesa"
+        ],
+        "description": "Endpoint untuk menghapus PotensiDesa.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PotensiDesa",
+            "schema": {
+              "$ref": "#/definitions/PotensiDesa"
+            }
+          }
+        }
+      }
+    },
+    "/statistikJk/": {
+      "get": {
+        "tags": [
+          "StatistikJk"
+        ],
+        "description": "Endpoint untuk mengambil semua StatistikJk.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikJk",
+            "schema": {
+              "$ref": "#/definitions/StatistikJks"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StatistikJk"
+        ],
+        "description": "Endpoint untuk membuat statistikjk baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikJk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikJk",
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          }
+        }
+      }
+    },
+    "/statistikJk/{id}": {
+      "get": {
+        "tags": [
+          "StatistikJk"
+        ],
+        "description": "Endpoint untuk mengambil StatistikJk berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikJk",
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "StatistikJk"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikJk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikJk",
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StatistikJk"
+        ],
+        "description": "Endpoint untuk menghapus StatistikJk.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikJk",
+            "schema": {
+              "$ref": "#/definitions/StatistikJk"
+            }
+          }
+        }
+      }
+    },
+    "/statistikpendidikan/": {
+      "get": {
+        "tags": [
+          "StatistikPend"
+        ],
+        "description": "Endpoint untuk mengambil semua StatistikPend.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPend",
+            "schema": {
+              "$ref": "#/definitions/StatistikPends"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StatistikPend"
+        ],
+        "description": "Endpoint untuk membuat StatistikPend baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikPend.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPend",
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          }
+        }
+      }
+    },
+    "/statistikpendidikan/{id}": {
+      "get": {
+        "tags": [
+          "StatistikPend"
+        ],
+        "description": "Endpoint untuk mengambil StatistikPend berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPend",
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "StatistikPend"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikPend.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPend",
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StatistikPend"
+        ],
+        "description": "Endpoint untuk menghapus StatistikPend.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPend",
+            "schema": {
+              "$ref": "#/definitions/StatistikPend"
+            }
+          }
+        }
+      }
+    },
+    "/statistikpekerjaan/": {
+      "get": {
+        "tags": [
+          "StatistikPekerjaan"
+        ],
+        "description": "Endpoint untuk mengambil semua StatistikPekerjaan.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPekerjaan",
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaans"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StatistikPekerjaan"
+        ],
+        "description": "Endpoint untuk membuat StatistikPekerjaan baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikPekerjaan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPekerjaan",
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          }
+        }
+      }
+    },
+    "/statistikpekerjaan/{id}": {
+      "get": {
+        "tags": [
+          "StatistikPekerjaan"
+        ],
+        "description": "Endpoint untuk mengambil StatistikPekerjaan berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPekerjaan",
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "StatistikPekerjaan"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikPekerjaan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPekerjaan",
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StatistikPekerjaan"
+        ],
+        "description": "Endpoint untuk menghapus StatistikPekerjaan.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikPekerjaan",
+            "schema": {
+              "$ref": "#/definitions/StatistikPekerjaan"
+            }
+          }
+        }
+      }
+    },
+    "/statistikagama/": {
+      "get": {
+        "tags": [
+          "StatistikAgama"
+        ],
+        "description": "Endpoint untuk mengambil semua StatistikAgama.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikAgama",
+            "schema": {
+              "$ref": "#/definitions/StatistikAgamas"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "StatistikAgama"
+        ],
+        "description": "Endpoint untuk membuat statistikagama baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikAgama.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikAgama",
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          }
+        }
+      }
+    },
+    "/statistikagama/{id}": {
+      "get": {
+        "tags": [
+          "StatistikAgama"
+        ],
+        "description": "Endpoint untuk mengambil StatistikAgama berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikAgama",
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "StatistikAgama"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi StatistikAgama.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikAgama",
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StatistikAgama"
+        ],
+        "description": "Endpoint untuk menghapus StatistikAgama.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek StatistikAgama",
+            "schema": {
+              "$ref": "#/definitions/StatistikAgama"
+            }
+          }
+        }
+      }
+    },
+    "/petugasksk/": {
+      "get": {
+        "tags": [
+          "PetugasKsk"
+        ],
+        "description": "Endpoint untuk mengambil semua PetugasKsk.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKsk",
+            "schema": {
+              "$ref": "#/definitions/PetugasKsks"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PetugasKsk"
+        ],
+        "description": "Endpoint untuk membuat petugasksk baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasKsk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKsk",
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        }
+      }
+    },
+    "/petugasksk/{id}": {
+      "get": {
+        "tags": [
+          "PetugasKsk"
+        ],
+        "description": "Endpoint untuk mengambil PetugasKsk berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKsk",
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PetugasKsk"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasKsk.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKsk",
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PetugasKsk"
+        ],
+        "description": "Endpoint untuk menghapus PetugasKsk.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKsk",
+            "schema": {
+              "$ref": "#/definitions/PetugasKsk"
+            }
+          }
+        }
+      }
+    },
+    "/petugaskebakaran/": {
+      "get": {
+        "tags": [
+          "PetugasKebakaran"
+        ],
+        "description": "Endpoint untuk mengambil semua PetugasKebakaran.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKebakaran",
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakarans"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PetugasKebakaran"
+        ],
+        "description": "Endpoint untuk membuat petugaskebakaran baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasKebakaran.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKebakaran",
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        }
+      }
+    },
+    "/petugaskebakaran/{id}": {
+      "get": {
+        "tags": [
+          "PetugasKebakaran"
+        ],
+        "description": "Endpoint untuk mengambil PetugasKebakaran berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKebakaran",
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PetugasKebakaran"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi PetugasKebakaran.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKebakaran",
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PetugasKebakaran"
+        ],
+        "description": "Endpoint untuk menghapus PetugasKebakaran.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek PetugasKebakaran",
+            "schema": {
+              "$ref": "#/definitions/PetugasKebakaran"
+            }
+          }
+        }
+      }
+    },
+    "/keamanan/": {
+      "get": {
+        "tags": [
+          "Keamanan"
+        ],
+        "description": "Endpoint untuk mengambil semua Keamanan.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Keamanan",
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "judul": {
+                  "example": "any"
+                },
+                "lokasi": {
+                  "example": "any"
+                },
+                "deskripsi": {
+                  "example": "any"
+                },
+                "tanggal": {
+                  "example": "any"
+                },
+                "notlp": {
+                  "example": "any"
+                },
+                "fotoBase64": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/keamanan/{id}": {
+      "get": {
+        "tags": [
+          "Keamanan"
+        ],
+        "description": "Endpoint untuk mengambil Keamanan berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Keamanan",
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Keamanan"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Keamanan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Keamanan",
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Keamanan"
+        ],
+        "description": "Endpoint untuk menghapus Keamanan.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Keamanan",
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            }
+          }
+        }
+      }
+    },
+    "/kebakaran/": {
+      "get": {
+        "tags": [
+          "Kebakaran"
+        ],
+        "description": "Endpoint untuk mengambil semua Kebakaran.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Kebakaran",
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "judul": {
+                  "example": "any"
+                },
+                "lokasi": {
+                  "example": "any"
+                },
+                "deskripsi": {
+                  "example": "any"
+                },
+                "tanggal": {
+                  "example": "any"
+                },
+                "notlp": {
+                  "example": "any"
+                },
+                "fotoBase64": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/kebakaran/{id}": {
+      "get": {
+        "tags": [
+          "Kebakaran"
+        ],
+        "description": "Endpoint untuk mengambil Kebakaran berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Kebakaran",
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Kebakaran"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Kebakaran.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Kebakaran",
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Kebakaran"
+        ],
+        "description": "Endpoint untuk menghapus Kebakaran.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Kebakaran",
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
             }
           }
         }
@@ -864,6 +2056,181 @@
         "$ref": "#/definitions/PetugasDesa"
       }
     },
+    "PotensiDesa": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "situbungur"
+        },
+        "deskripsi": {
+          "type": "string",
+          "example": "situbungur"
+        },
+        "alamat": {
+          "type": "string",
+          "example": "menjangan"
+        },
+        "cover": {
+          "type": "string",
+          "example": "cover.jpg"
+        }
+      }
+    },
+    "PotensiDesas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PotensiDesa"
+      }
+    },
+    "StatistikJk": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "laki_laki": {
+          "type": "string",
+          "example": "30"
+        },
+        "perempuan": {
+          "type": "string",
+          "example": "50"
+        }
+      }
+    },
+    "StatistikJks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StatistikJk"
+      }
+    },
+    "StatistikPend": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "sd": {
+          "type": "string",
+          "example": "30"
+        },
+        "smp": {
+          "type": "string",
+          "example": "50"
+        },
+        "sma": {
+          "type": "string",
+          "example": "30"
+        },
+        "smk": {
+          "type": "string",
+          "example": "50"
+        },
+        "kuliah": {
+          "type": "string",
+          "example": "50"
+        }
+      }
+    },
+    "StatistikPends": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StatistikPend"
+      }
+    },
+    "StatistikPekerjaan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "pns": {
+          "type": "string",
+          "example": "70"
+        },
+        "pegawai_swasta": {
+          "type": "string",
+          "example": "50"
+        },
+        "wirausaha": {
+          "type": "string",
+          "example": "30"
+        },
+        "tni": {
+          "type": "string",
+          "example": "50"
+        },
+        "polri": {
+          "type": "string",
+          "example": "50"
+        },
+        "buruh": {
+          "type": "string",
+          "example": "50"
+        },
+        "tidak_bekerja": {
+          "type": "string",
+          "example": "50"
+        }
+      }
+    },
+    "StatistikPekerjaans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StatistikPekerjaan"
+      }
+    },
+    "StatistikAgama": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "islam": {
+          "type": "string",
+          "example": "70"
+        },
+        "kristen": {
+          "type": "string",
+          "example": "30"
+        },
+        "katholik": {
+          "type": "string",
+          "example": "30"
+        },
+        "hindu": {
+          "type": "string",
+          "example": "20"
+        },
+        "budha": {
+          "type": "string",
+          "example": "20"
+        },
+        "konghucu": {
+          "type": "string",
+          "example": "10"
+        },
+        "kepercayaan": {
+          "type": "string",
+          "example": "0"
+        }
+      }
+    },
+    "StatistikAgamas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StatistikAgama"
+      }
+    },
     "Admin": {
       "type": "object",
       "properties": {
@@ -889,6 +2256,72 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Admin"
+      }
+    },
+    "PetugasKebakaran": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nama": {
+          "type": "string",
+          "example": "budi"
+        },
+        "email": {
+          "type": "string",
+          "example": "budijati@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        }
+      }
+    },
+    "PetugasKebakarans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PetugasKebaran"
+      }
+    },
+    "Kebakaran": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "Judul": {
+          "type": "string",
+          "example": "Banjir Bandang"
+        },
+        "lokasi": {
+          "type": "string",
+          "example": "Jl Menjangan IV"
+        },
+        "deskripsi": {
+          "type": "string",
+          "example": "Air Tidak Mengalir"
+        },
+        "tanggal": {
+          "type": "string",
+          "example": "Selasa 26 Novber 2021"
+        },
+        "notlp": {
+          "type": "string",
+          "example": "081387887675"
+        },
+        "foto": {
+          "type": "string",
+          "example": "cover.jpg"
+        }
+      }
+    },
+    "Kebakarans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Kebakaran"
       }
     },
     "Profile": {

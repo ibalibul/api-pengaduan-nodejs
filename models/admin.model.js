@@ -1,8 +1,8 @@
-module.exports = function (sequelize, Sequalize) {
+module.exports = function (sequelize, Sequelize) {
   var Admin = sequelize.define('Admin', {
-    nama: Sequalize.STRING,
-    email: Sequalize.STRING,
-    password: Sequalize.STRING,
+    nama: Sequelize.STRING,
+    email: Sequelize.STRING,
+    password: Sequelize.STRING, // Store hashed password
   });
   return Admin;
 };
