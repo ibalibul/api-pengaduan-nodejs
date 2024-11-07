@@ -227,6 +227,11 @@ const doc = {
       alamat: 'menjangan',
       cover: 'cover.jpg',
     },
+    Tanggapan: {
+      id: 1,
+      status: '0',
+      tanggapan: 'proses',
+    },
   },
 };
 

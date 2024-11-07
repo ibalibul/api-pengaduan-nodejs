@@ -17,8 +17,8 @@ db.user = require('./user.model.js')(sequelize, Sequelize);
 db.pengaduans = require('./pengaduan.model.js')(sequelize, Sequelize);
 db.tanggapan = require('./tanggapan.model.js')(sequelize, Sequelize);
 
-db.tanggapan.hasMany(db.pengaduans);
-db.pengaduans.belongsTo(db.tanggapan);
+// db.tanggapan.hasMany(db.pengaduans);
+// db.pengaduans.belongsTo(db.tanggapan);
 
 db.admin = require('./admin.model.js')(sequelize, Sequelize);
 db.petugasdesa = require('./petugasdesa.model.js')(sequelize, Sequelize);

@@ -6,6 +6,7 @@ module.exports = function (sequelize, Sequalize) {
     tanggal: Sequalize.STRING,
     notlp: Sequalize.INTEGER,
     foto: Sequalize.STRING,
+    status: Sequalize.INTEGER,
   });
   return Keamanan;
 };

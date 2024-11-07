@@ -52,6 +52,8 @@ var petugasksk = require('./routes/petugasksk');
 var petugaskebakaran = require('./routes/petugaskebakaran');
 var keamanan = require('./routes/keamanan');
 var kebakaran = require('./routes/kebakaran');
+var status = require('./routes/status');
+var tanggapan = require('./routes/tanggapan');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -68,6 +70,8 @@ app.use('/petugasksk', petugasksk);
 app.use('/petugaskebakaran', petugaskebakaran);
 app.use('/keamanan', keamanan);
 app.use('/kebakaran', kebakaran);
+app.use('/status', status);
+app.use('/tanggapan', tanggapan);
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

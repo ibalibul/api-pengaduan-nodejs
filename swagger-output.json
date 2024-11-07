@@ -379,8 +379,66 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Pengaduan"
+        ],
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "photo cover pengaduan"
+          },
+          {
+            "name": "Judul",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "judul pengaduan"
+          },
+          {
+            "name": "lokasi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "lokasi"
+          },
+          {
+            "name": "deskripsi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "deskripsi"
+          },
+          {
+            "name": "tanggal",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "tanggal"
+          },
+          {
+            "name": "notlp",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "notlp"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "status"
+          },
           {
             "name": "body",
             "in": "body",
@@ -402,6 +460,9 @@
                 "notlp": {
                   "example": "any"
                 },
+                "status": {
+                  "example": "any"
+                },
                 "fotoBase64": {
                   "example": "any"
                 }
@@ -410,6 +471,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pengaduan"
+            },
+            "description": "Output API untuk objek Pengaduan"
+          },
           "201": {
             "description": "Created"
           },
@@ -1659,8 +1726,66 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Keamanan"
+        ],
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "photo cover keamanan"
+          },
+          {
+            "name": "judul",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "judul keamanan"
+          },
+          {
+            "name": "lokasi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "lokasi"
+          },
+          {
+            "name": "deskripsi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "deskripsi"
+          },
+          {
+            "name": "tanggal",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "tanggal"
+          },
+          {
+            "name": "notlp",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "notlp"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "status"
+          },
           {
             "name": "body",
             "in": "body",
@@ -1690,6 +1815,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Keamanan"
+            },
+            "description": "Output API untuk objek Keamanan"
+          },
           "201": {
             "description": "Created"
           },
@@ -1792,8 +1923,66 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Kebakaran"
+        ],
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
+          {
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "photo cover kebakaran"
+          },
+          {
+            "name": "judul",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "judul kebakaran"
+          },
+          {
+            "name": "lokasi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "lokasi"
+          },
+          {
+            "name": "deskripsi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "deskripsi"
+          },
+          {
+            "name": "tanggal",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "tanggal"
+          },
+          {
+            "name": "notlp",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "notlp"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "status"
+          },
           {
             "name": "body",
             "in": "body",
@@ -1823,6 +2012,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Kebakaran"
+            },
+            "description": "Output API untuk objek Kebakaran"
+          },
           "201": {
             "description": "Created"
           },
@@ -1904,6 +2099,242 @@
             "description": "Output API untuk objek Kebakaran",
             "schema": {
               "$ref": "#/definitions/Kebakaran"
+            }
+          }
+        }
+      }
+    },
+    "/status/": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "description": "Endpoint untuk mengambil semua Status.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Status",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Status"
+        ],
+        "description": "Endpoint untuk membuat status baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Status.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Status",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        }
+      }
+    },
+    "/status/{id}": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "description": "Endpoint untuk mengambil Status berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Status",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Status"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Status.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Status",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Status"
+        ],
+        "description": "Endpoint untuk menghapus Status.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Status",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        }
+      }
+    },
+    "/tanggapan/": {
+      "get": {
+        "tags": [
+          "Tanggapan"
+        ],
+        "description": "Endpoint untuk mengambil semua Tanggapan.",
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Tanggapan",
+            "schema": {
+              "$ref": "#/definitions/Tanggapans"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tanggapan"
+        ],
+        "description": "Endpoint untuk membuat tanggapan baru.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Tanggapan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Tanggapan",
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
+            }
+          }
+        }
+      }
+    },
+    "/tanggapan/{id}": {
+      "get": {
+        "tags": [
+          "Tanggapan"
+        ],
+        "description": "Endpoint untuk mengambil Tanggapan berdasarkan id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Tanggapan",
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tanggapan"
+        ],
+        "description": "Endpoint untuk index http put.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "description": "Informasi Tanggapan.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Tanggapan",
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tanggapan"
+        ],
+        "description": "Endpoint untuk menghapus Tanggapan.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output API untuk objek Tanggapan",
+            "schema": {
+              "$ref": "#/definitions/Tanggapan"
             }
           }
         }
@@ -2346,6 +2777,23 @@
         "cover": {
           "type": "string",
           "example": "cover.jpg"
+        }
+      }
+    },
+    "Tanggapan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "status": {
+          "type": "string",
+          "example": "0"
+        },
+        "tanggapan": {
+          "type": "string",
+          "example": "proses"
         }
       }
     }

@@ -5,6 +5,7 @@ const db = require('../models/sqlite.database');
 const Pengaduan = db.pengaduans;
 const upload = require('../middlewares/uploadmodule');
 const { v4: uuidv4 } = require('uuid');
+const cors = require('cors');
 
 router.get('/', async (req, res, next) => {
   // #swagger.tags = ['Pengaduan']
@@ -41,20 +42,78 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/', upload.single('photo'), async (req, res, next) => {
+  // #swagger.tags = ['Pengaduan']
+  // #swagger.description = 'Endpoint untuk upload file.'
+  /*
+        #swagger.consumes = ['multipart/form-data']  
+        #swagger.produces = ['application/json']
+        #swagger.parameters['photo'] = {
+            in: 'formData',
+            type: 'file',
+            required: 'true',
+            description: 'photo cover pengaduan',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['Judul'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'judul pengaduan',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['lokasi'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'lokasi',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['deskripsi'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'deskripsi',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['tanggal'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'tanggal',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['notlp'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'notlp',
+        }
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['status'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'status',
+        } 
+  */
+  /* #swagger.responses[200] = { 
+      schema: { "$ref": "#/definitions/Pengaduan" },
+      description: "Output API untuk objek Pengaduan" } */
   try {
-    const { Judul, lokasi, deskripsi, tanggal, notlp, fotoBase64 } = req.body;
+    const { Judul, lokasi, deskripsi, tanggal, notlp, status, fotoBase64 } =
+      req.body;
     let foto = '';
 
     if (req.file) {
-      foto = `https://97ed-2404-c0-2020-00-6cc-f733.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
+      foto = `https://056b-2404-c0-2420-00-dca4-6ce7.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
     }
-
     const newPengaduan = await Pengaduan.create({
       Judul,
       lokasi,
       deskripsi,
       tanggal,
       notlp,
+      status,
       foto,
     });
 

@@ -41,12 +41,70 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/', upload.single('photo'), async (req, res, next) => {
+  // #swagger.tags = ['Keamanan']
+  // #swagger.description = 'Endpoint untuk upload file.'
+  /*
+        #swagger.consumes = ['multipart/form-data']  
+        #swagger.produces = ['application/json']
+        #swagger.parameters['photo'] = {
+            in: 'formData',
+            type: 'file',
+            required: 'true',
+            description: 'photo cover keamanan',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['judul'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'judul keamanan',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['lokasi'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'lokasi',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['deskripsi'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'deskripsi',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['tanggal'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'tanggal',
+        } 
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['notlp'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'notlp',
+        }
+        #swagger.consumes = ['multipart/form-data']
+        #swagger.parameters['status'] = {
+            in: 'formData',
+            type: 'string',
+            required: 'true',
+            description: 'status',
+        } 
+  /* #swagger.responses[200] = { 
+      schema: { "$ref": "#/definitions/Keamanan" },
+      description: "Output API untuk objek Keamanan" } */
+
   try {
-    const { judul, lokasi, deskripsi, tanggal, notlp, fotoBase64 } = req.body;
+    const { judul, lokasi, deskripsi, tanggal, notlp, status, fotoBase64 } =
+      req.body;
     let foto = '';
 
     if (req.file) {
-      foto = `https://97ed-2404-c0-2020-00-6cc-f733.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
+      foto = `https://056b-2404-c0-2420-00-dca4-6ce7.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
     }
 
     const newKeamanan = await Keamanan.create({
@@ -55,6 +113,7 @@ router.post('/', upload.single('photo'), async (req, res, next) => {
       deskripsi,
       tanggal,
       notlp,
+      status,
       foto,
     });
 
