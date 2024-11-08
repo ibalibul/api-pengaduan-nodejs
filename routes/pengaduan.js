@@ -105,7 +105,7 @@ router.post('/', upload.single('photo'), async (req, res, next) => {
     let foto = '';
 
     if (req.file) {
-      foto = `https://056b-2404-c0-2420-00-dca4-6ce7.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
+      foto = `https://97ed-2404-c0-2020-00-6cc-f733.ngrok-free.app/uploads/${req.file.filename}`; // set foto to filename of uploaded photo
     }
     const newPengaduan = await Pengaduan.create({
       Judul,

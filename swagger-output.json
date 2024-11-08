@@ -1807,6 +1807,9 @@
                 "notlp": {
                   "example": "any"
                 },
+                "status": {
+                  "example": "any"
+                },
                 "fotoBase64": {
                   "example": "any"
                 }
@@ -2002,6 +2005,9 @@
                   "example": "any"
                 },
                 "notlp": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 },
                 "fotoBase64": {
@@ -2241,24 +2247,86 @@
         "tags": [
           "Tanggapan"
         ],
-        "description": "Endpoint untuk membuat tanggapan baru.",
+        "description": "Endpoint untuk upload file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
-            "name": "data",
-            "in": "body",
-            "description": "Informasi Tanggapan.",
+            "name": "photo",
+            "in": "formData",
+            "type": "file",
             "required": true,
+            "description": "photo cover tanggapan"
+          },
+          {
+            "name": "tanggapan",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "tanggapan "
+          },
+          {
+            "name": "deskripsi",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "deskripsi"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "type": "integer",
+            "required": true,
+            "description": "status"
+          },
+          {
+            "name": "selesai",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "selesai"
+          },
+          {
+            "name": "body",
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/Tanggapan"
+              "type": "object",
+              "properties": {
+                "tanggapan": {
+                  "example": "any"
+                },
+                "deskripsi": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "selesai": {
+                  "example": "any"
+                },
+                "fotoBase64": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Output API untuk objek Tanggapan",
             "schema": {
               "$ref": "#/definitions/Tanggapan"
-            }
+            },
+            "description": "Output API untuk objek Tanggapan"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
